@@ -1,3 +1,4 @@
+from textwrap import fill
 import folium
 from numpy import size
 import pandas
@@ -30,10 +31,19 @@ feature_group = folium.FeatureGroup(name='My Map')
 
 for lat, long, elev in zip(latitude, longetude, elevation):
 
-    feature_group.add_child(folium.Marker(
-        location=[lat, long],
-        popup=f'Elevation: {elev} m',
-        icon=folium.Icon(color=color_by_elevation(elev))))
+    # feature_group.add_child(folium.Marker(
+    #     location=[lat, long],
+    #     popup=f'Elevation: {elev} m',
+    #     icon=folium.Icon(color=color_by_elevation(elev))))
+    feature_group.add_child(
+        folium.Circle(
+            location=[lat, long],
+            radius=elev,
+            popup=f'Elevation: {elev} m',
+            color=color_by_elevation(elev),
+            fill=color_by_elevation(elev)
+        )
+    )
 
 map.add_child(feature_group)
 
