@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/home/wes/Documents/01-Clientes/00 - Wesley/00-Estudos/02 - Python/03 - python mega course - udemy/01 - app map with python/env/bin/python3.10" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from charset_normalizer.cli.normalizer import cli_detect
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(cli_detect())
